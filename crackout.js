@@ -4,7 +4,6 @@
 /** Drawing  */
 const dwg = new Drawing(document.getElementById("gameCanvas"));
 
-
 setup();
 
 function setup() {
@@ -23,11 +22,12 @@ function game() {
 /** Bat object
  * @param {number} xStart start x position (optional: default 0)
  * @param {number} yStart start y position (optional: default 0)
+ * @param {number} widthOfBat width of the bat (optional: default: 30)
  */
-function Bat(xStart = 0,yStart = 0, batWidth) {
+function Bat(xStart = 0,yStart = 0, widthOfBat = 30) {
     let xPos = xStart;
     let yPos = yStart;
-    let batWidth = 30;
+    let batWidth = widthOfBat;
     if ((xStart - batWidth/2) < 0) xPos = batWidth/0;
 
     /** set centre position of bat
@@ -91,3 +91,4 @@ function Drawing (canvas) {
     }
 
 }
+

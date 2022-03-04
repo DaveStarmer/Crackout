@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Mocha Tests</title>
+    <link rel="stylesheet" href="node_modules/mocha/mocha.css">
+  </head>
+  <body>
+    <div id="mocha"></div>
+    <script src="node_modules/mocha/mocha.js"></script>
+    <script src="node_modules/chai/chai.js"></script>
+    <script>mocha.setup('bdd')</script>
+
+    <!-- test setups -->
+    <script src="test/test-setup-doc.js"></script>
+    <script>
+      // set up document before loading game
+      testSetupDoc();
+      const assert = chai.assert;
+    </script>
+
+    <!-- code to test -->
+    <script src="crackout.js"></script>
+
+    <!-- test files -->
+    <script src="test/test-canvas-basics.js"></script>
+
+    <script>
+      mocha.run();
+    </script>
+  </body>
+</html>

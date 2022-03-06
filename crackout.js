@@ -64,8 +64,7 @@ function Drawing (canvas) {
     let currStroke = "white";
     
     /** draw background
-     * @param {string} col word or hex value 
-     * (optional - will default to current fill colour)
+     * @param {string} col word or hex value (optional - will default to current fill colour)
      */
     this.bg = function (col = this.currFill) {
         dwgContext.fillStyle = col;

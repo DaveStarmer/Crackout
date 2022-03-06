@@ -62,6 +62,9 @@ function Drawing (canvas) {
 
     /** current stroke colour */
     let currStroke = "white";
+
+    /** current stroke thickness */
+    let currThickness = 2;
     
     /** draw background
      * @param {string} col word or hex value (optional - will default to current fill colour)
@@ -81,12 +84,21 @@ function Drawing (canvas) {
     }
 
     /** set current stroke / return current stroke 
-     * @param col (optional) colour to set as stroke
+     * @param {string} col (optional) colour to set as stroke
      * @returns {string} current colour
      */
     this.stroke = function(col) {
         if (col !== undefined) currStroke = col;
         return currStroke;   
+    }
+
+    /** set line thickness of stroke
+     * @param {number} thickness line thickness of stroke
+     * @returns {number} current line thickness of stroke
+     */
+    this.strokeThickness = function(thickness) {
+        if (thickness > 0 || thickness === 0) currThickness = thickness;
+        return currThickness;
     }
 
 }

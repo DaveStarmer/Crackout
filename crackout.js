@@ -20,30 +20,76 @@ function game() {
 }
 
 /** Bat object
+ * @param {object} drawingObj drawing object to draw on (compusory)
  * @param {number} xStart start x position (optional: default 0)
  * @param {number} yStart start y position (optional: default 0)
  * @param {number} widthOfBat width of the bat (optional: default: 30)
  */
-function Bat(xStart = 0,yStart = 0, widthOfBat = 30) {
+function Bat(drawingObj, xStart = 0,yStart = 0, widthOfBat = 30, thicknessOfBat = 5) {
+    // if no drawing object supplied, exit
+    if (!(drawingObj instanceof Drawing)) return;
+    /** drawing object for bat */
+    const drw = drawingObj;
+    /** x position */
     let xPos = xStart;
+    if ((xStart - widthOfBat/2) < 0) xPos = widthOfBat/2;
+    /** y position */
     let yPos = yStart;
+    /** width of bat */
     let batWidth = widthOfBat;
-    if ((xStart - batWidth/2) < 0) xPos = batWidth/0;
+    /** thickness of bat */
+    let thickness = thicknessOfBat;
+
 
     /** set centre position of bat
      * @param {number} x x position
      * @param {number} y y position
      */
     this.setPos = function (x,y) {
-        if (x != null) xPos = x;
-        if (y != null) yPos = y;
+        if (x != null && (x > 0 || x === 0)) {
+            xPos = x;
+            if (xPos - batWidth < 0) xPos = 0;
+        }
+        if (y != null && (y > 0 || y === 0)) {
+            yPos = y;
+            //TODO: compare to max y and reduce accordingly
+        }
     }
 
-    /** set new width for bat
-     * @param {number} newWidth new width of bat
+    /** set and/or return x position
+     * @param {number} xPosition new x position of bat
+     * @returns {number} x position of bat
      */
-    this.setWidth = function(newWidth) {
-        batWidth = newWidth;
+    this.x = function(xPosition) {
+        if (xPosition != null) this.setPos(xPosition);
+        return xPos;
+    }
+
+    /** set and/or return y position
+     * @param {number} yPosition new y position of bat
+     * @returns {number} y position of bat
+     */
+    this.y = function(yPosition) {
+        if (yPosition != null) this.setPos(null,yPosition);
+        return yPos;
+    }
+
+    /** set and/or return width for bat
+     * @param {number} newWidth new width of bat
+     * @returns {number} width of bat
+     */
+    this.width = function(newWidth) {
+        if (newWidth != null && newWidth > 0) batWidth = newWidth;
+        return batWidth;
+    }
+
+    /** set and/or return thickness of bat 
+     * @param {number} newThickness new thickness of bat
+     * @returns {number} thickness of bat
+    */
+    this.thickness = function (newThickness) {
+        if (newThickness != null && newThickness > 0) thickness = newThickness;
+        return thickness;
     }
 }
 

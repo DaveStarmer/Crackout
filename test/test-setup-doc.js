@@ -1,13 +1,13 @@
 /** set up page for first time */
 function testSetupDoc() {
-    testSetupDwg("gameCanvas");
+    testSetupCanv("gameCanvas");
 }
 
 /** set up canvas on page
  * @param {string} newCanvId string ID for new canvas (optional: defaults to 'testCanvas')
  * @returns {object} newly created canvas
  */
-function testSetupDwg(newCanvId = "testCanvas") {
+function testSetupCanv(newCanvId = "testCanvas") {
     destroyCanvas(newCanvId);
     // get div to contain canvases - or create if necessary
     const destDiv = (document.getElementById('testspace') != null) ? document.getElementById('testspace') : document.createElement("div");
